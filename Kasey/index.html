@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Founder's Clarity Engine - by Will Bryant</title>
+    <title>Marketing Strategy Assessment - by Josh W</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,8 +13,8 @@
             --background: #FAFAFA;
             --foreground: #303030;
             --muted: #545454;
-            --accent: #3B82F6; /* A professional blue accent */
-            --accent-soft: #3b82f633;
+            --accent: #8B5CF6; /* Josh's purple brand color */
+            --accent-soft: #8B5CF633;
             --border: #E4E4E7;
             --card-bg: #FFFFFF;
         }
@@ -53,7 +53,7 @@
             background: var(--accent); border-color: var(--accent);
             color: #FFFFFF; font-weight: 600;
         }
-        .btn-primary:hover { background-color: #2563EB; border-color: #2563EB; }
+        .btn-primary:hover { background-color: #7C3AED; border-color: #7C3AED; }
         .btn-lg { padding: 16px 40px; font-size: 1.125rem; }
 
         /* Form Styling */
@@ -67,12 +67,12 @@
         }
         @keyframes slideInUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
-        .form-input, textarea.form-input {
+        .form-input, textarea.form-input, select.form-input {
             width: 100%; padding: 14px; margin-bottom: 1rem; border: 1px solid var(--border);
             border-radius: 8px; background-color: var(--card-bg); color: var(--foreground);
             font-size: 1rem; transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
-        .form-input:focus, textarea.form-input:focus {
+        .form-input:focus, textarea.form-input:focus, select.form-input:focus {
             outline: none; border-color: var(--accent);
             box-shadow: 0 0 0 3px var(--accent-soft);
         }
@@ -147,7 +147,7 @@
         }
         .load::before {
             position: absolute; content: ""; width: 100%; height: 100%;
-            background-color: #93c5fd; border-radius: inherit;
+            background-color: #C4B5FD; border-radius: inherit;
             animation: loading2_713 3.5s ease both infinite;
         }
         @keyframes text_713 {
@@ -186,15 +186,15 @@
         <main class="container mx-auto px-6">
             <section id="intro-section" class="hero-section min-h-screen flex flex-col items-center justify-center text-center py-20 relative">
                 <div class="max-w-3xl">
-                    <h1 class="font-mono text-xl md:text-2xl text-muted tracking-widest">THE FOUNDER'S CLARITY ENGINE</h1>
-                    <p class="mt-8 text-4xl md:text-6xl font-bold text-foreground max-w-3xl tracking-tighter">Stop Seeing Trees. Start Seeing the Forest.</p>
+                    <h1 class="font-mono text-xl md:text-2xl text-muted tracking-widest">MARKETING STRATEGY ASSESSMENT</h1>
+                    <p class="mt-8 text-4xl md:text-6xl font-bold text-foreground max-w-3xl tracking-tighter">Stop Guessing. Start Growing.</p>
                     <div class="mt-12 text-lg text-muted max-w-2xl mx-auto space-y-4">
-                        <p>A 2-minute diagnostic to push through ambiguity, gain clarity, and define the actionable next steps to get your business to the next level.</p>
-                        <p>Powered by the coaching methodology of <strong>Will Bryant</strong>.</p>
+                        <p>A 3-minute assessment to identify your marketing gaps, clarify your strategy, and create an actionable implementation roadmap that drives real business growth.</p>
+                        <p>Powered by the proven methodology of <strong>Josh W</strong>.</p>
                     </div>
                     <div class="mt-12">
                         <a href="#funnel-section" id="start-audit-btn" class="btn btn-primary btn-lg">
-                            Generate My Clarity Map
+                            Generate My Marketing Blueprint
                         </a>
                     </div>
                 </div>
@@ -222,11 +222,12 @@
             });
             
             const questions = [
-                { id: 'mission', type: 'text', prompt: "In one sentence, what is the primary mission of your business right now?" },
-                { id: 'next_level', type: 'radio', prompt: "What does 'the next level' look like for you in the next 6 months?", options: ['Secure Funding', 'Achieve Product-Market Fit', 'Scale Operations & Team', 'Increase Personal Freedom'] },
-                { id: 'bottleneck', type: 'textarea', prompt: "What is the single biggest ambiguous situation you need to push through?" },
-                { id: 'mental_energy', type: 'radio', prompt: "Which of these areas consumes most of your mental energy right now?", options: ['Fundraising / Financials', 'Product / Market Strategy', 'Team / Operations', 'Sales / Marketing', 'Personal Burnout'] },
-                { id: 'first_action', type: 'textarea', prompt: "If you had a clear, actionable plan today, what's the very first thing you would do?" },
+                { id: 'business', type: 'textarea', prompt: "Describe your business in 2-3 sentences. What do you sell and who do you serve?" },
+                { id: 'goal', type: 'radio', prompt: "What's your primary marketing goal for the next 6 months?", options: ['Build Brand Awareness', 'Improve Lead Generation', 'Scale Revenue & Growth', 'Launch New Product/Service'] },
+                { id: 'challenge', type: 'textarea', prompt: "What's your biggest marketing challenge or frustration right now?" },
+                { id: 'current_marketing', type: 'radio', prompt: "Which best describes your current marketing activities?", options: ['Just getting started (minimal marketing)', 'Some social media & basic website', 'Active marketing but inconsistent results', 'Multiple channels but need optimization'] },
+                { id: 'target_customer', type: 'textarea', prompt: "Describe your ideal customer. Who are they and what problems do you solve for them?" },
+                { id: 'budget', type: 'select', prompt: "What's your monthly marketing budget range?", options: ['Under $500', '$500 - $2,000', '$2,000 - $5,000', '$5,000 - $10,000', 'Over $10,000'] },
                 { id: 'name', type: 'text', prompt: "Finally, what's your name?" },
             ];
             const totalSteps = questions.length;
@@ -251,6 +252,15 @@
                             </div>
                         `).join('');
                         groupContent = `<label class="form-label">${q.prompt}</label><div class="space-y-3">${optionsHtml}</div>`;
+                    } else if (q.type === 'select') {
+                        const optionsHtml = q.options.map(opt => `<option value="${opt}">${opt}</option>`).join('');
+                        groupContent = `
+                            <label for="q-${q.id}" class="form-label">${q.prompt}</label>
+                            <select id="q-${q.id}" name="${q.id}" required class="form-input">
+                                <option value="">Select your budget range...</option>
+                                ${optionsHtml}
+                            </select>
+                        `;
                     }
                     return `<div class="form-group ${index === 0 ? 'active' : ''}" data-step="${index}">${groupContent}</div>`;
                 }).join('');
@@ -276,13 +286,13 @@
                 
                 const nextBtn = document.getElementById('next-btn');
                 if (nextBtn) {
-                    nextBtn.textContent = currentStep === totalSteps - 1 ? 'Generate My Clarity Map →' : 'Next →';
+                    nextBtn.textContent = currentStep === totalSteps - 1 ? 'Generate My Marketing Blueprint →' : 'Next →';
                 }
             }
 
             function handleNext() {
                 const currentGroup = document.querySelector(`.form-group[data-step="${currentStep}"]`);
-                const input = currentGroup.querySelector('input[required], textarea[required]');
+                const input = currentGroup.querySelector('input[required], textarea[required], select[required]');
                 
                 let isValid = true;
                 if (input.type === 'radio') {
@@ -334,7 +344,7 @@
                             <span class="loader-text">analyzing</span>
                             <span class="load"></span>
                         </div>
-                        <p class="font-mono text-muted mt-6">Generating your founder blueprint...</p>
+                        <p class="font-mono text-muted mt-6">Generating your marketing blueprint...</p>
                     </div>`;
                 
                 try {
@@ -354,7 +364,7 @@
 
                 } catch (error) {
                     console.error("Error during submission process: ", error);
-                    funnelContainer.innerHTML = `<div class="text-center p-8"><h3 class="text-2xl font-bold text-red-600">ERROR</h3><p class="text-lg text-gray-600 mt-4">Could not generate your blueprint. Please try again.</p></div>`;
+                    funnelContainer.innerHTML = `<div class="text-center p-8"><h3 class="text-2xl font-bold text-red-600">ERROR</h3><p class="text-lg text-gray-600 mt-4">Could not generate your marketing blueprint. Please try again.</p></div>`;
                 }
             }
             
@@ -363,10 +373,10 @@
                     <div class="result-container">
                         ${resultHtml}
                         <div class="mt-10 pt-8 border-t border-border text-center">
-                             <h3 class="text-2xl font-bold text-foreground">Ready to Action This Clarity?</h3>
-                             <p class="mt-4 text-muted">This blueprint is your starting point. A 1:1 session with Will can turn this map into a reality.</p>
+                             <h3 class="text-2xl font-bold text-foreground">Ready to Implement This Strategy?</h3>
+                             <p class="mt-4 text-muted">This blueprint is your foundation. A 1:1 strategy session with Josh W can turn this plan into measurable results.</p>
                              <div class="mt-8">
-                                <a href="https://www.fiverr.com/willbryant" target="_blank" class="btn btn-primary btn-lg">Book a Session with Will</a>
+                                <a href="mailto:josh@example.com" class="btn btn-primary btn-lg">Book a Strategy Session with Josh W</a>
                              </div>
                         </div>
                     </div>`;
